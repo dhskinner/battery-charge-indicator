@@ -134,13 +134,19 @@ void Channel::Flash(unsigned long duration, uint8_t flashes)
     for (int i = 0; i < flashes; i++)
     {
         LedOn();
+#ifdef ENABLE_WATCHDOG_TIMER
+        wdt_reset();
+#endif
         delay(duration);
         LedOff();
+#ifdef ENABLE_WATCHDOG_TIMER
+        wdt_reset();
+#endif
         delay(duration);
     }
 };
 
-#ifdef CALIBRATION_MODE
+#ifdef ENABLE_CALIBRATION_MODE
 
 // enable calibration mode to check the primary and secondary sense channels
 // using an external power source and multimeter to apply zero to say 16V in
@@ -155,6 +161,9 @@ void Channel::Calibrate()
     for (int i = 0; i < samples; i++)
     {
         reading += analogRead(_sensePin);
+#ifdef ENABLE_WATCHDOG_TIMER
+        wdt_reset();
+#endif
         delay(50);
     }
     reading /= samples;
@@ -163,8 +172,14 @@ void Channel::Calibrate()
     if (reading == 0)
     {
         LedOn();
+#ifdef ENABLE_WATCHDOG_TIMER
+        wdt_reset();
+#endif
         delay(START_DELAY_MS);
         LedOff();
+#ifdef ENABLE_WATCHDOG_TIMER
+        wdt_reset();
+#endif
         delay(START_FLASH_MS);
     }
 
@@ -183,8 +198,14 @@ void Channel::Calibrate()
         if (digit == 0)
         {
             LedOn();
+#ifdef ENABLE_WATCHDOG_TIMER
+            wdt_reset();
+#endif
             delay(START_DELAY_MS);
             LedOff();
+#ifdef ENABLE_WATCHDOG_TIMER
+            wdt_reset();
+#endif
             delay(START_FLASH_MS);
         }
         else
@@ -192,16 +213,28 @@ void Channel::Calibrate()
             for (int i = 0; i < digit; i++)
             {
                 LedOn();
+#ifdef ENABLE_WATCHDOG_TIMER
+                wdt_reset();
+#endif
                 delay(START_FLASH_MS);
                 LedOff();
+#ifdef ENABLE_WATCHDOG_TIMER
+                wdt_reset();
+#endif
                 delay(START_FLASH_MS);
             }
         }
         // reduce the reading by an order of magnitude
         reading = reading % magnitude;
         magnitude /= 10;
+#ifdef ENABLE_WATCHDOG_TIMER
+        wdt_reset();
+#endif
         delay(START_DELAY_MS);
     }
+#ifdef ENABLE_WATCHDOG_TIMER
+    wdt_reset();
+#endif
     delay(START_DELAY_MS);
 }
 

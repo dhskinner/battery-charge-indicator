@@ -13,15 +13,22 @@
 #define _CONFIG_H_
 
 #include "Arduino.h"
+#include <avr/wdt.h>
 
 // set the target processor - either TARGET_PROCESSOR_ATTINY85 or TARGET_PROCESSOR_ATTINY84
 #define TARGET_PROCESSOR_ATTINY84
 
 // uncomment to enable calibration mode to check the primary and secondary sense channels
-// #define CALIBRATION_MODE
+// #define ENABLE_CALIBRATION_MODE
 
 // uncomment to enable pin test mode to check we have the right mapping
-// #define PIN_TEST_MODE
+// #define ENABLE_PIN_TEST_MODE
+
+// uncomment to enable the watchdog timer for automatic recovery from lockups
+#define ENABLE_WATCHDOG_TIMER
+
+// watchdog timeout period (see <avr/wdt.h> WDTO_* options)
+#define WATCHDOG_TIMEOUT WDTO_4S
 
 #define START_FLASHES 1              // number of times to flash each LED on startup
 #define START_FLASH_MS 200           // duration to flash LEDs on startup
@@ -34,7 +41,7 @@
 
 #ifdef TARGET_PROCESSOR_ATTINY84
 /*
-ATMEL ATTINY84A / ARDUINO - CLOCKWISE PINS  !!!! IMPORTANt THIS IS SET CORRECTLY IN THE BOOTLOADER !!!
+ATMEL ATTINY84A - CLOCKWISE PINS  !!!! IMPORTANT THIS IS SET CORRECTLY IN THE BOOTLOADER !!!
                                              +-\/-+
                                        VCC  1|    |14  GND
             LED 2 |            (D 10)  PB0  2|    |13  PA0  (D  0)        AREF | Sense Main
@@ -102,7 +109,7 @@ ATMEL ATTINY85 PINOUTS - NEED CHECKING AGAINST PHYSICAL HARDWARE
 //                           +----+
 #elif defined(PINMAPPING_CCW)
 #warning "This is the COUNTERCLOCKWISE pin mapping - make sure you're using the pinout diagram with the pins in counter clockwise order"
-// ATMEL ATTINY84A / ARDUINO
+// ATMEL ATTINY84A
 //                           +-\/-+
 //                     VCC  1|    |14  GND
 //             (D  0)  PB0  2|    |13  PA0  (D 10)        AREF

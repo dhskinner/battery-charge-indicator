@@ -74,8 +74,10 @@ On boot (normal mode), the firmware:
 
 Compile-time options in `src/config.h`:
 
-- `CALIBRATION_MODE`: samples ADC channels and blinks out measured values for field calibration.
-- `PIN_TEST_MODE`: basic pin/LED test routine (`src/pintest.h`) for validating board mapping and outputs.
+- `ENABLE_FUSE_REPORT_MODE`: read and print ATTiny84A fuse bytes and fuse bit breakdown over serial at startup
+- `ENABLE_WATCHDOG_TIMER` : enable the watchdog timer for automatic recovery from lockups.
+- `ENABLE_CALIBRATION_MODE`: samples ADC channels and blinks out measured values for field calibration.
+- `ENABLE_PIN_TEST_MODE`: basic pin/LED test routine (`src/pintest.h`) for validating board mapping and outputs.
 
 ## 2) Source Code and Build (PlatformIO)
 
@@ -118,7 +120,7 @@ pio run
 pio run -t upload
 ```
 
-### Bootloader/fuse notes for fresh ATTiny84A devices
+### Setting bootloader/fuse for fresh ATTiny84A devices
 
 The source comments in `src/main.cpp` include detailed instructions for preparing a fresh ATTiny84A with USBasp, including:
 
@@ -128,7 +130,73 @@ The source comments in `src/main.cpp` include detailed instructions for preparin
 - proof-of-life LED checks,
 - recovery pointer for high-voltage serial programming if needed.
 
-`platformio.ini` also records expected signature/fuse values for reference.
+`platformio.ini` also sets expected signature/fuse values.
+
+The tool AVRDUDESS at (https://github.com/ZakKemble/AVRDUDESS)[https://github.com/ZakKemble/AVRDUDESS] is also easy to set fuse bits.
+
+To check fuse settings run the provided script in Powershell:
+
+```bash
+.\tools\read-attiny84a-fuses.ps1 -AvrDude "C:\Program Files (x86)\AVRDUDESS\avrdude.exe" 
+```
+
+Or alternatively run: 
+
+```bash
+avrdude -c usbasp -p t84 -U efuse:r:-:h -U hfuse:r:-:h -U lfuse:r:-:h
+```
+
+Expected values are:
+
+```bash
+ATtiny84A fuse report
+--------------------
+LFUSE: 0xE2
+HFUSE: 0xDC
+EFUSE: 0xFF
+
+Low fuse (LFUSE)
+  CKDIV8     OFF (bit7=1) - Clock divide-by-8 enabled
+  CKOUT      OFF (bit6=1) - System clock output on CLKO enabled
+  SUT1       ON  (bit5=1) - Start-up time select bit 1
+  SUT0       OFF (bit4=0) - Start-up time select bit 0
+  CKSEL3     OFF (bit3=0) - Clock source select bit 3
+  CKSEL2     OFF (bit2=0) - Clock source select bit 2
+  CKSEL1     ON  (bit1=1) - Clock source select bit 1
+  CKSEL0     OFF (bit0=0) - Clock source select bit 0
+  SUT[1:0]      0b10
+  CKSEL[3:0]    0b0010
+
+High fuse (HFUSE)
+  RSTDISBL   OFF (bit7=1) - External RESET pin disabled
+  DWEN       OFF (bit6=1) - debugWIRE enabled
+  SPIEN      ON  (bit5=0) - ISP serial programming enabled
+  WDTON      OFF (bit4=1) - Watchdog always on (hardware forced)
+  EESAVE     OFF (bit3=1) - EEPROM preserved through chip erase
+  BODLEVEL2  ON  (bit2=1) - Brown-out level select bit 2
+  BODLEVEL1  OFF (bit1=0) - Brown-out level select bit 1
+  BODLEVEL0  OFF (bit0=0) - Brown-out level select bit 0
+  BODLEVEL[2:0] 0b100
+
+Extended fuse (EFUSE)
+  RES7       ON  (bit7=1) - Reserved (typically left as 1)
+  RES6       ON  (bit6=1) - Reserved (typically left as 1)
+  RES5       ON  (bit5=1) - Reserved (typically left as 1)
+  RES4       ON  (bit4=1) - Reserved (typically left as 1)
+  RES3       ON  (bit3=1) - Reserved (typically left as 1)
+  RES2       ON  (bit2=1) - Reserved (typically left as 1)
+  RES1       ON  (bit1=1) - Reserved (typically left as 1)
+  SELFPRGEN  OFF (bit0=1) - Self-programming (SPM) enabled
+
+Note: many AVR fuse features are active-low (bit = 0 means programmed/enabled).
+```
+
+Notes: 
+1. Its essential to keep pin mapping/clock settings aligned with your board core configuration when burning fuses.
+2. Many AVR fuse features are active-low (bit = 0 means programmed/enabled).
+3. Enabling BOD increases power consumption slightly.
+4. Higher BOD thresholds can cause more frequent resets on brief supply dips.
+5. If the MCU appears unresponsive after incorrect fuse settings, use HV rescue tooling as referenced in the source comments.
 
 ### Calibration
 
@@ -141,41 +209,20 @@ Calibration of the 12V sense lines is performed manually and adjusted in source 
 
 ### Brown-out Detection (BOD)
 
-Brown-out Detection is an ATTiny hardware protection feature that keeps the MCU in reset when supply voltage drops below a configured threshold.
+Brown-out Detection is an ATTiny hardware protection feature that keeps the MCU in reset when supply voltage drops below a configured threshold, to prevents unstable code execution during low-voltage events. This reduces risk of corrupted state, bad ADC readings, and EEPROM write issues.
 
-What it does:
+The MCU restarts cleanly when Vcc returns above the threshold.
 
-1. Prevents unstable code execution during low-voltage events.
-2. Reduces risk of corrupted state, bad ADC readings, and EEPROM write issues.
-3. Restarts cleanly when Vcc returns above the threshold.
+### Watchdog Timer
 
-Trade-off:
+Watchdog support is enabled in firmware (`ENABLE_WATCHDOG_TIMER`) with a configurable timeout (`WATCHDOG_TIMEOUT`, currently 4 seconds).
 
-1. Enabling BOD increases power consumption slightly.
-2. Higher BOD thresholds can cause more frequent resets on brief supply dips.
+Implementation summary:
 
-How to configure BOD:
-
-Reliability is the priority, so enable BOD (commonly around 2.7V for 8MHz AVR operation):
-1. BOD is configured in fuse bits, not in normal C/C++ source code.
-2. To set these manually use the Arduino IDE board options plus Burn Bootloader (with USBasp connected).
-
-USBasp workflow (safe and repeatable):
-
-1. Connect USBasp to ICSP and power target correctly.
-2. In Arduino IDE, select ATTiny84A board/core options, then set B.O.D. Level 4.3V.
-3. Run Burn Bootloader to write the fuse values.
-4. Upload firmware from PlatformIO as usual (`pio run -t upload`).
-5. Optionally verify written fuses with avrdude before/after changes:
-
-```bash
-avrdude -c usbasp -p t84 -U efuse:r:-:h -U hfuse:r:-:h -U lfuse:r:-:h
-```
-
-Notes:
-
-1. Keep pin mapping/clock settings aligned with your board core configuration when burning fuses.
-2. If the MCU appears unresponsive after incorrect fuse settings, use HV rescue tooling as referenced in the source comments.
+1. At very early startup, firmware captures reset cause (`MCUSR`), clears it, and disables watchdog to prevent reset-loop lockups.
+2. After normal setup completes, watchdog is enabled and then fed in the main loop.
+3. Long blocking paths (startup LED flash, calibration and pin-test delays) also feed the watchdog to avoid false triggers.
+4. If the previous reset was watchdog-caused, a brief LED pattern is shown at boot for diagnostics.
 
 ### Notes
 

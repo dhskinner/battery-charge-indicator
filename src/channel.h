@@ -69,7 +69,7 @@ public:
     // - if we get successive measurements for the whole debounce time, then 50Hz is present
     bool IsAcPresent(bool ledOnIfPresent = true);
 
-#ifdef CALIBRATION_MODE
+#ifdef ENABLE_CALIBRATION_MODE
 
     // enable calibration mode to check the primary and secondary sense channels
     // using an external power source and multimeter to apply zero to say 16V in

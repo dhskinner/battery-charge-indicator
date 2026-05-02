@@ -27,7 +27,7 @@ To burn the bootloader to a fresh Attiny:
 
       Refer to here for a guide to USBAsp https://www.freetronics.com.au/pages/usbasp-icsp-programmer-quickstart-guide
 
-  3) setup the following options (this is easiest in the Arduino IDE instead of PlatformIO):
+  3) setup the following options:
       - Board:              Attiny 24/44/84a (no bootloader)
       - B.O.D. Level:       Enabled 4.3V (brownout detection) (!! IMPORTANT !!)
       - Chip:               Attiny84(a)
@@ -44,9 +44,9 @@ To burn the bootloader to a fresh Attiny:
   5) On the USBAsp board, remove the "Slow Clock" jumper
 
   6) For a simple proof-of-life test either:
-      - run the Arduino 'Blink' sketch using pin 7,8,9 or 10 (see "pintest.h" for LED pinouts)
+      - run a 'Blink' sketch using pin 7,8,9 or 10 (see "pintest.h" for LED pinouts)
       - uncomment #define PIN_TEST_MODE below to see all four LED's blinking at the same time
-      - run this sample in the Arduino IDE:
+      - upload and run this sample:
 
           int led_pin[4] = {7, 8, 9, 10}, led_index = 0;
           void setup() {
@@ -60,7 +60,7 @@ To burn the bootloader to a fresh Attiny:
             digitalWrite(led_pin[led_index], LOW); delay(100);
           }
 
-  7) Upload the production program code as normal using Arduino IDE or PlatformIO and USBAsp connected via ICSP
+  7) Upload the production program code as normal using PlatformIO and USBAsp connected via ICSP
      For PlatformIO:
         - go to the PlatformIO tab in VSCode and 'Open" this project
         - when config is complete, go to the PIO menu bar to the left of the VSCode working area
@@ -70,11 +70,60 @@ To burn the bootloader to a fresh Attiny:
 */
 
 // Uncomment the following line for a simple test program that cycles a couple of LED's:
-// #define PIN_TEST_MODE
+// #define ENABLE_PIN_TEST_MODE
 
 #include "channel.h"
 #include "fader.h"
 #include "pintest.h"
+
+#ifdef ENABLE_WATCHDOG_TIMER
+// Capture and clear reset cause as early as possible, then disable WDT to avoid reset loops.
+uint8_t g_resetCause __attribute__((section(".noinit")));
+void watchdogEarlyInit(void) __attribute__((naked)) __attribute__((section(".init3")));
+void watchdogEarlyInit(void)
+{
+  g_resetCause = MCUSR;
+  MCUSR = 0;
+  wdt_disable();
+}
+
+static inline void watchdogInit()
+{
+  wdt_enable(WATCHDOG_TIMEOUT);
+  wdt_reset();
+}
+
+static inline void watchdogFeed()
+{
+  wdt_reset();
+}
+
+static void indicateWatchdogReset()
+{
+  if ((g_resetCause & _BV(WDRF)) == 0)
+    return;
+
+  // Briefly flash all three onboard channel LEDs to indicate a watchdog recovery reset.
+  pinMode(CHANNEL_PRI_LED_PIN, OUTPUT);
+  pinMode(CHANNEL_SEC_LED_PIN, OUTPUT);
+  pinMode(CHANNEL_MAINS_LED_PIN, OUTPUT);
+
+  for (uint8_t i = 0; i < 2; i++)
+  {
+    digitalWrite(CHANNEL_PRI_LED_PIN, HIGH);
+    digitalWrite(CHANNEL_SEC_LED_PIN, HIGH);
+    digitalWrite(CHANNEL_MAINS_LED_PIN, HIGH);
+    watchdogFeed();
+    delay(75);
+
+    digitalWrite(CHANNEL_PRI_LED_PIN, LOW);
+    digitalWrite(CHANNEL_SEC_LED_PIN, LOW);
+    digitalWrite(CHANNEL_MAINS_LED_PIN, LOW);
+    watchdogFeed();
+    delay(75);
+  }
+}
+#endif
 
 Channel channelPrimary(CHANNEL_PRI_SENSE_PIN, CHANNEL_PRI_THRESHOLD, CHANNEL_PRI_SCALE, CHANNEL_PRI_LED_PIN);
 Channel channelSecondary(CHANNEL_SEC_SENSE_PIN, CHANNEL_SEC_THRESHOLD, CHANNEL_SEC_SCALE, CHANNEL_SEC_LED_PIN);
@@ -88,7 +137,7 @@ bool IsCharging();
 // run once
 void setup()
 {
-#ifdef PIN_TEST_MODE
+#ifdef ENABLE_PIN_TEST_MODE
   pinTestSetup();
 #else
   // setup sense channels
@@ -106,19 +155,28 @@ void setup()
   channelOutput.Flash(START_FLASH_MS, START_FLASHES);
   delay(START_DELAY_MS);
 #endif
+
+#ifdef ENABLE_WATCHDOG_TIMER
+  indicateWatchdogReset();
+  watchdogInit();
+#endif
 }
 
 // run repeatedly
 void loop()
 {
-#if defined(CALIBRATION_MODE)
+#ifdef ENABLE_WATCHDOG_TIMER
+  watchdogFeed();
+#endif
+
+#if defined(ENABLE_CALIBRATION_MODE)
 
   // calibration mode takes readings from each ADC and blinks out the values
   channelMains.IsAcPresent();
   channelPrimary.Calibrate();
   channelSecondary.Calibrate();
 
-#elif defined(PIN_TEST_MODE)
+#elif defined(ENABLE_PIN_TEST_MODE)
 
   // pin test mode is to check basic operation of the LED's and outputs
   pinTestRun();

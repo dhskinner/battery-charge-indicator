@@ -5,7 +5,7 @@
 #define _PINTEST_H_
 
 /*
-ATMEL ATTINY84A / ARDUINO - CLOCKWISE PINS  !!!! IMPORTANT THIS IS SET CORRECTLY IN THE BOOTLOADER !!!
+ATMEL ATTINY84A - CLOCKWISE PINS  !!!! IMPORTANT THIS IS SET CORRECTLY IN THE BOOTLOADER !!!
                                              +-\/-+
                                        VCC  1|    |14  GND
             LED 2 |            (D 10)  PB0  2|    |13  PA0  (D  0)        AREF | Sense Main
@@ -68,6 +68,9 @@ void pinTestRun()
     // digitalWrite(2, HIGH);
     // digitalWrite(1, HIGH);
     // digitalWrite(0, HIGH);
+#ifdef ENABLE_WATCHDOG_TIMER
+    wdt_reset();
+#endif
     delay(1000);
 
     // basic test
@@ -86,6 +89,9 @@ void pinTestRun()
     // digitalWrite(2, LOW);
     // digitalWrite(1, LOW);
     // digitalWrite(0, LOW);
+#ifdef ENABLE_WATCHDOG_TIMER
+    wdt_reset();
+#endif
     delay(1000);
 }
 
