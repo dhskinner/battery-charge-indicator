@@ -5,7 +5,7 @@
 #define _PINTEST_H_
 
 /*
-ATMEL ATTINY84 / ARDUINO - CLOCKWISE PINS  !!!! IMPORTANT THIS IS SET CORRECTLY IN THE BOOTLOADER !!!
+ATMEL ATTINY84A / ARDUINO - CLOCKWISE PINS  !!!! IMPORTANT THIS IS SET CORRECTLY IN THE BOOTLOADER !!!
                                              +-\/-+
                                        VCC  1|    |14  GND
             LED 2 |            (D 10)  PB0  2|    |13  PA0  (D  0)        AREF | Sense Main

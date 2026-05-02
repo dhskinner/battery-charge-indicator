@@ -27,9 +27,9 @@ To burn the bootloader to a fresh Attiny:
 
       Refer to here for a guide to USBAsp https://www.freetronics.com.au/pages/usbasp-icsp-programmer-quickstart-guide
 
-  3) setup the following options (this is easiest in the Arduino IDE):
+  3) setup the following options (this is easiest in the Arduino IDE instead of PlatformIO):
       - Board:              Attiny 24/44/84a (no bootloader)
-      - B.O.D. Level:       Disabled (brownout detection)
+      - B.O.D. Level:       Enabled 4.3V (brownout detection) (!! IMPORTANT !!)
       - Chip:               Attiny84(a)
       - Clock Source:       8MHz (internal)
       - Save EEPROM:        EEPROM not retained

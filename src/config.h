@@ -34,7 +34,7 @@
 
 #ifdef TARGET_PROCESSOR_ATTINY84
 /*
-ATMEL ATTINY84 / ARDUINO - CLOCKWISE PINS  !!!! IMPORTANt THIS IS SET CORRECTLY IN THE BOOTLOADER !!!
+ATMEL ATTINY84A / ARDUINO - CLOCKWISE PINS  !!!! IMPORTANt THIS IS SET CORRECTLY IN THE BOOTLOADER !!!
                                              +-\/-+
                                        VCC  1|    |14  GND
             LED 2 |            (D 10)  PB0  2|    |13  PA0  (D  0)        AREF | Sense Main
@@ -90,7 +90,7 @@ ATMEL ATTINY85 PINOUTS - NEED CHECKING AGAINST PHYSICAL HARDWARE
 
 #if defined(PINMAPPING_CW)
 #warning "This is the CLOCKWISE pin mapping - make sure you're using the pinout diagram with the pins in clockwise order"
-// ATMEL ATTINY84 / ARDUINO
+// ATMEL ATTINY84A / ARDUINO
 //                           +-\/-+
 //                     VCC  1|    |14  GND
 //             (D 10)  PB0  2|    |13  PA0  (D  0)        AREF
@@ -102,7 +102,7 @@ ATMEL ATTINY85 PINOUTS - NEED CHECKING AGAINST PHYSICAL HARDWARE
 //                           +----+
 #elif defined(PINMAPPING_CCW)
 #warning "This is the COUNTERCLOCKWISE pin mapping - make sure you're using the pinout diagram with the pins in counter clockwise order"
-// ATMEL ATTINY84 / ARDUINO
+// ATMEL ATTINY84A / ARDUINO
 //                           +-\/-+
 //                     VCC  1|    |14  GND
 //             (D  0)  PB0  2|    |13  PA0  (D 10)        AREF

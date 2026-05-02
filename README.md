@@ -52,7 +52,7 @@ When charging stops:
 - fade is stopped gracefully (`Fader::StopFade()`),
 - output returns to off state at the end of the current fade cycle.
 
-### Default ATTiny84 channel configuration
+### Default ATTiny84A channel configuration
 
 Defined in `src/config.h`:
 
@@ -118,9 +118,9 @@ pio run
 pio run -t upload
 ```
 
-### Bootloader/fuse notes for fresh ATTiny84 devices
+### Bootloader/fuse notes for fresh ATTiny84A devices
 
-The source comments in `src/main.cpp` include detailed instructions for preparing a fresh ATTiny84 with USBasp, including:
+The source comments in `src/main.cpp` include detailed instructions for preparing a fresh ATTiny84A with USBasp, including:
 
 - core board options,
 - expected fuse values,
@@ -130,6 +130,53 @@ The source comments in `src/main.cpp` include detailed instructions for preparin
 
 `platformio.ini` also records expected signature/fuse values for reference.
 
+### Calibration
+
+Calibration of the 12V sense lines is performed manually and adjusted in source code. The input voltage range is approximately 0VDC to +20VDC, and ADC response is reasonably linear, as follows:
+
+![Calibration Reference](design/calibration.png)
+
+- `design/calibration.xlsx`: calibration data workbook.
+- `design/calibration.png`: calibration reference graphic.
+
+### Brown-out Detection (BOD)
+
+Brown-out Detection is an ATTiny hardware protection feature that keeps the MCU in reset when supply voltage drops below a configured threshold.
+
+What it does:
+
+1. Prevents unstable code execution during low-voltage events.
+2. Reduces risk of corrupted state, bad ADC readings, and EEPROM write issues.
+3. Restarts cleanly when Vcc returns above the threshold.
+
+Trade-off:
+
+1. Enabling BOD increases power consumption slightly.
+2. Higher BOD thresholds can cause more frequent resets on brief supply dips.
+
+How to configure BOD:
+
+Reliability is the priority, so enable BOD (commonly around 2.7V for 8MHz AVR operation):
+1. BOD is configured in fuse bits, not in normal C/C++ source code.
+2. To set these manually use the Arduino IDE board options plus Burn Bootloader (with USBasp connected).
+
+USBasp workflow (safe and repeatable):
+
+1. Connect USBasp to ICSP and power target correctly.
+2. In Arduino IDE, select ATTiny84A board/core options, then set B.O.D. Level 4.3V.
+3. Run Burn Bootloader to write the fuse values.
+4. Upload firmware from PlatformIO as usual (`pio run -t upload`).
+5. Optionally verify written fuses with avrdude before/after changes:
+
+```bash
+avrdude -c usbasp -p t84 -U efuse:r:-:h -U hfuse:r:-:h -U lfuse:r:-:h
+```
+
+Notes:
+
+1. Keep pin mapping/clock settings aligned with your board core configuration when burning fuses.
+2. If the MCU appears unresponsive after incorrect fuse settings, use HV rescue tooling as referenced in the source comments.
+
 ### Notes
 
 - This firmware is currently configured for `TARGET_PROCESSOR_ATTINY84`.
@@ -137,19 +184,23 @@ The source comments in `src/main.cpp` include detailed instructions for preparin
 
 ## 3) Hardware Design
 
-Hardware design assets are in `design/` and `design/EasyEDA/`. The electronics were authored in **EasyEDA**. Mechanical assets are in `design/Solidworks/`.
+Hardware design assets are in `design/`. 
+
+Electronics were authored using **EasyEDA** in `design/EasyEDA/`. 
+
+Mechanical assets are in `design/Solidworks/`.
 
 This project has three PCB designs:
 
 1. Main Board
-2. LED Board
-3. ATTiny84 Expander Board
+2. ATTiny84A Expander Board
+3. LED Board
 
 ### PCB 1: Main Board
 
 The Main Board is the core controller board containing the ATTiny85, charging logic, sense interfaces, and PWM output stage. 
 
-Originally this was designed for ATTiny85 but was upgraded to ATTiny84 (see the next section)
+Originally this was designed for ATTiny85 but was upgraded to ATTiny84A (see the next section)
 
 #### Schematic
 
@@ -157,29 +208,37 @@ Originally this was designed for ATTiny85 but was upgraded to ATTiny84 (see the 
 
 ![Main Board Schematic Page 2](design/Battery%20Charge%20Indicator%20Main%20Board%202.svg)
 
-#### PCB Front (Top)
+#### PCB
+
+<img src="design/Battery%20Charge%20Indicator%20Main%20Board.png" alt="Main Board 3D" width="25%" />
+
+##### PCB Front (Top)
 
 ![Main Board Top](design/Battery%20Charge%20Indicator%20Main%20Board%20Top.svg)
 
-#### PCB Back (Bottom)
+##### PCB Back (Bottom)
 
 ![Main Board Bottom](design/Battery%20Charge%20Indicator%20Main%20Board%20Bottom.svg)
 
-### PCB 2: ATTiny84 Expander Board
+### PCB 2: ATTiny84A Expander Board
 
-The ATTiny84 Expander Board (daughter board) supports the microcontroller integration/programming workflow and related signal breakout. This was added to replace the original ATTiny85 and provide a little more flexibility.
+The ATTiny84A Expander Board (daughter board) supports the microcontroller integration/programming workflow and related signal breakout. This was added to replace the original ATTiny85 and provide a little more flexibility.
 
 #### Schematic
 
-![ATTiny84 Expander Schematic](design/Battery%20Charge%20Indicator%20ATTiny84%20Schematic.svg)
+![ATTiny84A Expander Schematic](design/Battery%20Charge%20Indicator%20ATTiny84%20Schematic.svg)
 
-#### PCB Front (Top)
+#### PCB
 
-![ATTiny84 Expander Top](design/Battery%20Charge%20Indicator%20ATTiny84%20Top.svg)
+<img src="design/Battery%20Charge%20Indicator%20ATTiny84.png" alt="ATTiny84A Expander 3D" width="25%" />
 
-#### PCB Back (Bottom)
+##### PCB Front (Top)
 
-![ATTiny84 Expander Bottom](design/Battery%20Charge%20Indicator%20ATTiny84%20Bottom.svg)
+![ATTiny84A Expander Top](design/Battery%20Charge%20Indicator%20ATTiny84%20Top.svg)
+
+##### PCB Back (Bottom)
+
+![ATTiny84A Expander Bottom](design/Battery%20Charge%20Indicator%20ATTiny84%20Bottom.svg)
 
 ### PCB 3: LED Board
 
@@ -189,20 +248,14 @@ The LED Board provides the remote/visible charge indication hardware driven by t
 
 ![LED Board Schematic](design/Battery%20Charge%20Indicator%20LED%20Schematic.svg)
 
-#### PCB Front (Top)
+#### PCB
+
+<img src="design/Battery%20Charge%20Indicator%20LED.png" alt="LED Board 3D" width="25%" />
+
+##### PCB Front (Top)
 
 ![LED Board Top](design/Battery%20Charge%20Indicator%20LED%20Top.svg)
 
-#### PCB Back (Bottom)
+##### PCB Back (Bottom)
 
 ![LED Board Bottom](design/Battery%20Charge%20Indicator%20LED%20Bottom.svg)
-
-## Calibration and test artifacts
-
-Calibration of the 12V sense lines is performed manually and adjusted in source code. The input voltage range is approximately 0VDC to +20VDC, and ADC response is reasonably linear, as follows:
-
-
-![Calibration Reference](design/calibration.png)
-
-- `design/calibration.xlsx`: calibration data workbook.
-- `design/calibration.png`: calibration reference graphic.
