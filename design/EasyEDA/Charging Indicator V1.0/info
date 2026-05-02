@@ -1,0 +1,1238 @@
+{
+  "uuid": "2021984b535c7cc7c0e77d3f4223a67d",
+  "path": "Offline/Charging%20Indicator%20V1.0",
+  "name": "Charging Indicator V1.0",
+  "content": "",
+  "created_at": "2024-11-25 13:45:34",
+  "updated_at": "2026-05-02 11:33:05",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "5e572f631a56d93d4bbdc4baf9467ecf",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "7a2faf02889040879843b86b9aea3213": 1,
+        "3cf10322e52e474287d6b39584b9e919": 1,
+        "abc8efbbe6334a1a93f69a375c89a50e": 4,
+        "e943c23b524147eeac6f9457287a783e": 2,
+        "ce92acfdc8024ab38f76e1c48c22973d": 1,
+        "d1967012734640e5b2f2cc1ea764740b": 1,
+        "8c95eef853b1473e9539399823e4b359": 1,
+        "3f36348ec05ee4392d9b4650c680cc0f": 4,
+        "36324898e320cb9a6c09f0bc08133816": 1,
+        "b210af5a1436310a86e8b108e2e5a90b": 1,
+        "4f3ab571bad286ee7cb84c878c7feb74": 1,
+        "5563491116b5449a9a46d9ad40c4d199": 1,
+        "5ed82406ec48b502fb1bdcfec1576f72": 1,
+        "404aa9221ff94de597b8734806e7c74f": 1,
+        "90120144a29f250f52c5fae09d57661e": 5,
+        "8aebd62994a05a89b2fc1c520ce2e64f": 3,
+        "6de44aea69e4dd94d931f794d932f2c4": 2,
+        "b30d847b28bd4db62f418079d9a831f8": 2,
+        "c8c2c558fac9410d08cd9c984c6e32bd": 2,
+        "174fc9d3f6c85723c8c5def63b722ca6": 1,
+        "45aa9db41fe55f139f756074a7ef37a0": 1,
+        "f80e29816fd30bb295222fb4f47bcc25": 1,
+        "4ff52245138e46488eadf6cd24f7ea62": 1,
+        "25eef13595154cf911d80acfae99db0d": 1,
+        "bdea432cad40be0e7998e026eafc1b06": 2,
+        "739ad43e70f87969aa0056ebc970a314": 1,
+        "c50841615a0e4eeca460b6fe61ba34b1": 1,
+        "8ae0ee5b43f64d7db27485d2b9489d17": 2,
+        "92c32ceaaac84139add7ebda884f0a47": 1,
+        "0eedab92e7aafdde01ddc57928d2356c": 3
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "FC-2012HRK-620D",
+          1,
+          "LED0805-R-RD",
+          "240V",
+          {
+            "Manufacturer Part": "NCD0805R1",
+            "Manufacturer": "国星光电",
+            "Supplier": "LCSC",
+            "Supplier Part": "C84256"
+          }
+        ],
+        [
+          "100nF",
+          2,
+          "C0805",
+          "C1,C2",
+          {
+            "Manufacturer Part": "CL21B104KCFNNNE",
+            "Manufacturer": "SAMSUNG(三星)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C28233"
+          }
+        ],
+        [
+          "10uF",
+          1,
+          "C0603",
+          "C3",
+          {
+            "Manufacturer Part": "CL10A106MA8NRNC",
+            "Manufacturer": "SAMSUNG(三星)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C96446"
+          }
+        ],
+        [
+          "330uF",
+          2,
+          "CAP-SMD_BD6.3-L6.6-W6.6-LS7.6-RD",
+          "C4,C5",
+          {
+            "Manufacturer Part": "HV0J337M0605PZ",
+            "Manufacturer": "HONOR(荣誉)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5246503"
+          }
+        ],
+        [
+          "0805G (Green)",
+          1,
+          "LED0805-R-RD",
+          "CHARGE",
+          {
+            "Manufacturer Part": "KT-0805G",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2297"
+          }
+        ],
+        [
+          "SS34_C8678",
+          3,
+          "SMA_L4.3-W2.6-LS5.2-RD",
+          "D1,D2,D4",
+          {
+            "Manufacturer Part": "SS34",
+            "Manufacturer": "MDD(辰达半导体)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C8678"
+          }
+        ],
+        [
+          "1N4148W_C81598",
+          1,
+          "SOD-123F_L2.7-W1.6-LS3.8-RD",
+          "D3",
+          {
+            "Manufacturer Part": "1N4148W",
+            "Manufacturer": "ST(先科)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C81598"
+          }
+        ],
+        [
+          "33uH",
+          1,
+          "IND-SMD_L12.0-W12.0",
+          "L1",
+          {
+            "Manufacturer Part": "SLH1207S330MTT",
+            "Manufacturer": "Sunltech(韩国顺磁)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C181844"
+          }
+        ],
+        [
+          "0Ω",
+          5,
+          "R0603",
+          "LED1,LED2,MAINS,PRI,SEC",
+          {
+            "Manufacturer Part": "0603WAF0000T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C21189"
+          }
+        ],
+        [
+          "AO3400A",
+          1,
+          "SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR",
+          "Q1",
+          {
+            "Manufacturer Part": "AO3400A",
+            "Manufacturer": "AOS",
+            "Supplier": "LCSC",
+            "Supplier Part": "C20917"
+          }
+        ],
+        [
+          "2n3904S-RTK/PS_C18536",
+          4,
+          "SOT-23-3_L2.9-W1.3-P1.90-LS2.4-TR",
+          "Q2,Q3,Q4,Q5",
+          {
+            "Manufacturer Part": "2N3904S-RTK/PS",
+            "Manufacturer": "KEC",
+            "Supplier": "LCSC",
+            "Supplier Part": "C18536"
+          }
+        ],
+        [
+          "150kΩ",
+          2,
+          "R0805",
+          "R1,R2",
+          {
+            "Manufacturer Part": "0805W8F1503T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17470"
+          }
+        ],
+        [
+          "47kΩ",
+          2,
+          "R0805",
+          "R3,R4",
+          {
+            "Manufacturer Part": "0805W8F4702T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17713"
+          }
+        ],
+        [
+          "1MΩ",
+          1,
+          "R0603",
+          "R6",
+          {
+            "Manufacturer Part": "0603WAF1004T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C22935"
+          }
+        ],
+        [
+          "100kΩ",
+          1,
+          "R1206",
+          "R7",
+          {
+            "Manufacturer Part": "1206W4F1003T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17900"
+          }
+        ],
+        [
+          "10kΩ",
+          1,
+          "R0603",
+          "R8",
+          {
+            "Manufacturer Part": "0603WAF1002T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C25804"
+          }
+        ],
+        [
+          "4.7kΩ",
+          1,
+          "R1206",
+          "R9",
+          {
+            "Manufacturer Part": "1206W4F4701T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17936"
+          }
+        ],
+        [
+          "about 100k internal pullup",
+          1,
+          "R0603",
+          "R10",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1kΩ",
+          3,
+          "R0805",
+          "R11,R12,R13",
+          {
+            "Manufacturer Part": "0805W8F1001T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17513"
+          }
+        ],
+        [
+          "220Ω",
+          1,
+          "R0603",
+          "R18",
+          {
+            "Manufacturer Part": "0603WAF2200T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C22962"
+          }
+        ],
+        [
+          "17-21SUYC/TR8",
+          2,
+          "LED0805-R-RD",
+          "SENSE1,SENSE2",
+          {
+            "Manufacturer Part": "KT-0805黄灯",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2296"
+          }
+        ],
+        [
+          "LM2596S-5.0",
+          1,
+          "TO-263-5_L10.2-W8.9-P1.70-BR",
+          "U1",
+          {
+            "Manufacturer Part": "LM2596S-5.0",
+            "Manufacturer": "UMW(友台半导体)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C347421"
+          }
+        ]
+      ],
+      "updateTime": 1777685432,
+      "createTime": 1732502739,
+      "histories": [],
+      "created_at": "2024-11-25 13:45:39",
+      "updated_at": "2026-05-02 11:30:32"
+    },
+    {
+      "uuid": "79789f8bc6222ccea4c4d1bf56a80a24",
+      "title": "Sheet_2",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "0eedab92e7aafdde01ddc57928d2356c": 1,
+        "bdea432cad40be0e7998e026eafc1b06": 1,
+        "b30d847b28bd4db62f418079d9a831f8": 1,
+        "6de44aea69e4dd94d931f794d932f2c4": 1,
+        "90120144a29f250f52c5fae09d57661e": 1,
+        "7a2faf02889040879843b86b9aea3213": 1,
+        "b0248eb51e084227889f2cb84eab79c4": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "FC-2012HRK-620D",
+          1,
+          "LED0805-R-RD",
+          "240V",
+          {
+            "Manufacturer Part": "NCD0805R1",
+            "Manufacturer": "国星光电",
+            "Supplier": "LCSC",
+            "Supplier Part": "C84256"
+          }
+        ],
+        [
+          "100nF",
+          2,
+          "C0805",
+          "C1,C2",
+          {
+            "Manufacturer Part": "CL21B104KCFNNNE",
+            "Manufacturer": "SAMSUNG(三星)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C28233"
+          }
+        ],
+        [
+          "10uF",
+          1,
+          "C0603",
+          "C3",
+          {
+            "Manufacturer Part": "CL10A106MA8NRNC",
+            "Manufacturer": "SAMSUNG(三星)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C96446"
+          }
+        ],
+        [
+          "330uF",
+          2,
+          "CAP-SMD_BD6.3-L6.6-W6.6-LS7.6-RD",
+          "C4,C5",
+          {
+            "Manufacturer Part": "HV0J337M0605PZ",
+            "Manufacturer": "HONOR(荣誉)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5246503"
+          }
+        ],
+        [
+          "0805G (Green)",
+          1,
+          "LED0805-R-RD",
+          "CHARGE",
+          {
+            "Manufacturer Part": "KT-0805G",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2297"
+          }
+        ],
+        [
+          "SS34_C8678",
+          3,
+          "SMA_L4.3-W2.6-LS5.2-RD",
+          "D1,D2,D4",
+          {
+            "Manufacturer Part": "SS34",
+            "Manufacturer": "MDD(辰达半导体)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C8678"
+          }
+        ],
+        [
+          "1N4148W_C81598",
+          1,
+          "SOD-123F_L2.7-W1.6-LS3.8-RD",
+          "D3",
+          {
+            "Manufacturer Part": "1N4148W",
+            "Manufacturer": "ST(先科)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C81598"
+          }
+        ],
+        [
+          "33uH",
+          1,
+          "IND-SMD_L12.0-W12.0",
+          "L1",
+          {
+            "Manufacturer Part": "SLH1207S330MTT",
+            "Manufacturer": "Sunltech(韩国顺磁)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C181844"
+          }
+        ],
+        [
+          "0Ω",
+          5,
+          "R0603",
+          "LED1,LED2,MAINS,PRI,SEC",
+          {
+            "Manufacturer Part": "0603WAF0000T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C21189"
+          }
+        ],
+        [
+          "AO3400A",
+          1,
+          "SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR",
+          "Q1",
+          {
+            "Manufacturer Part": "AO3400A",
+            "Manufacturer": "AOS",
+            "Supplier": "LCSC",
+            "Supplier Part": "C20917"
+          }
+        ],
+        [
+          "2n3904S-RTK/PS_C18536",
+          4,
+          "SOT-23-3_L2.9-W1.3-P1.90-LS2.4-TR",
+          "Q2,Q3,Q4,Q5",
+          {
+            "Manufacturer Part": "2N3904S-RTK/PS",
+            "Manufacturer": "KEC",
+            "Supplier": "LCSC",
+            "Supplier Part": "C18536"
+          }
+        ],
+        [
+          "150kΩ",
+          2,
+          "R0805",
+          "R1,R2",
+          {
+            "Manufacturer Part": "0805W8F1503T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17470"
+          }
+        ],
+        [
+          "47kΩ",
+          2,
+          "R0805",
+          "R3,R4",
+          {
+            "Manufacturer Part": "0805W8F4702T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17713"
+          }
+        ],
+        [
+          "1MΩ",
+          1,
+          "R0603",
+          "R6",
+          {
+            "Manufacturer Part": "0603WAF1004T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C22935"
+          }
+        ],
+        [
+          "100kΩ",
+          1,
+          "R1206",
+          "R7",
+          {
+            "Manufacturer Part": "1206W4F1003T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17900"
+          }
+        ],
+        [
+          "10kΩ",
+          1,
+          "R0603",
+          "R8",
+          {
+            "Manufacturer Part": "0603WAF1002T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C25804"
+          }
+        ],
+        [
+          "4.7kΩ",
+          1,
+          "R1206",
+          "R9",
+          {
+            "Manufacturer Part": "1206W4F4701T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17936"
+          }
+        ],
+        [
+          "about 100k internal pullup",
+          1,
+          "R0603",
+          "R10",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1kΩ",
+          3,
+          "R0805",
+          "R11,R12,R13",
+          {
+            "Manufacturer Part": "0805W8F1001T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17513"
+          }
+        ],
+        [
+          "220Ω",
+          1,
+          "R0603",
+          "R18",
+          {
+            "Manufacturer Part": "0603WAF2200T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C22962"
+          }
+        ],
+        [
+          "17-21SUYC/TR8",
+          2,
+          "LED0805-R-RD",
+          "SENSE1,SENSE2",
+          {
+            "Manufacturer Part": "KT-0805黄灯",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2296"
+          }
+        ],
+        [
+          "LM2596S-5.0",
+          1,
+          "TO-263-5_L10.2-W8.9-P1.70-BR",
+          "U1",
+          {
+            "Manufacturer Part": "LM2596S-5.0",
+            "Manufacturer": "UMW(友台半导体)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C347421"
+          }
+        ]
+      ],
+      "updateTime": 1777685399,
+      "createTime": 1733748361,
+      "histories": [],
+      "created_at": "2024-12-09 22:46:01",
+      "updated_at": "2026-05-02 11:29:59"
+    },
+    {
+      "uuid": "d4b8d8ee5922f683cb16ae135e153b1d",
+      "title": "Notes",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {},
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "FC-2012HRK-620D",
+          1,
+          "LED0805-R-RD",
+          "240V",
+          {
+            "Manufacturer Part": "NCD0805R1",
+            "Manufacturer": "国星光电",
+            "Supplier": "LCSC",
+            "Supplier Part": "C84256"
+          }
+        ],
+        [
+          "100nF",
+          2,
+          "C0805",
+          "C1,C2",
+          {
+            "Manufacturer Part": "CL21B104KCFNNNE",
+            "Manufacturer": "SAMSUNG(三星)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C28233"
+          }
+        ],
+        [
+          "10uF",
+          1,
+          "C0603",
+          "C3",
+          {
+            "Manufacturer Part": "CL10A106MA8NRNC",
+            "Manufacturer": "SAMSUNG(三星)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C96446"
+          }
+        ],
+        [
+          "330uF",
+          2,
+          "CAP-SMD_BD6.3-L6.6-W6.6-LS7.6-RD",
+          "C4,C5",
+          {
+            "Manufacturer Part": "HV0J337M0605PZ",
+            "Manufacturer": "HONOR(荣誉)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5246503"
+          }
+        ],
+        [
+          "0805G (Green)",
+          1,
+          "LED0805-R-RD",
+          "CHARGE",
+          {
+            "Manufacturer Part": "KT-0805G",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2297"
+          }
+        ],
+        [
+          "SS34_C8678",
+          3,
+          "SMA_L4.3-W2.6-LS5.2-RD",
+          "D1,D2,D4",
+          {
+            "Manufacturer Part": "SS34",
+            "Manufacturer": "MDD(辰达半导体)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C8678"
+          }
+        ],
+        [
+          "1N4148W_C81598",
+          1,
+          "SOD-123F_L2.7-W1.6-LS3.8-RD",
+          "D3",
+          {
+            "Manufacturer Part": "1N4148W",
+            "Manufacturer": "ST(先科)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C81598"
+          }
+        ],
+        [
+          "33uH",
+          1,
+          "IND-SMD_L12.0-W12.0",
+          "L1",
+          {
+            "Manufacturer Part": "SLH1207S330MTT",
+            "Manufacturer": "Sunltech(韩国顺磁)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C181844"
+          }
+        ],
+        [
+          "0Ω",
+          5,
+          "R0603",
+          "LED1,LED2,MAINS,PRI,SEC",
+          {
+            "Manufacturer Part": "0603WAF0000T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C21189"
+          }
+        ],
+        [
+          "AO3400A",
+          1,
+          "SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR",
+          "Q1",
+          {
+            "Manufacturer Part": "AO3400A",
+            "Manufacturer": "AOS",
+            "Supplier": "LCSC",
+            "Supplier Part": "C20917"
+          }
+        ],
+        [
+          "2n3904S-RTK/PS_C18536",
+          4,
+          "SOT-23-3_L2.9-W1.3-P1.90-LS2.4-TR",
+          "Q2,Q3,Q4,Q5",
+          {
+            "Manufacturer Part": "2N3904S-RTK/PS",
+            "Manufacturer": "KEC",
+            "Supplier": "LCSC",
+            "Supplier Part": "C18536"
+          }
+        ],
+        [
+          "150kΩ",
+          2,
+          "R0805",
+          "R1,R2",
+          {
+            "Manufacturer Part": "0805W8F1503T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17470"
+          }
+        ],
+        [
+          "47kΩ",
+          2,
+          "R0805",
+          "R3,R4",
+          {
+            "Manufacturer Part": "0805W8F4702T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17713"
+          }
+        ],
+        [
+          "1MΩ",
+          1,
+          "R0603",
+          "R6",
+          {
+            "Manufacturer Part": "0603WAF1004T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C22935"
+          }
+        ],
+        [
+          "100kΩ",
+          1,
+          "R1206",
+          "R7",
+          {
+            "Manufacturer Part": "1206W4F1003T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17900"
+          }
+        ],
+        [
+          "10kΩ",
+          1,
+          "R0603",
+          "R8",
+          {
+            "Manufacturer Part": "0603WAF1002T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C25804"
+          }
+        ],
+        [
+          "4.7kΩ",
+          1,
+          "R1206",
+          "R9",
+          {
+            "Manufacturer Part": "1206W4F4701T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17936"
+          }
+        ],
+        [
+          "about 100k internal pullup",
+          1,
+          "R0603",
+          "R10",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1kΩ",
+          3,
+          "R0805",
+          "R11,R12,R13",
+          {
+            "Manufacturer Part": "0805W8F1001T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17513"
+          }
+        ],
+        [
+          "220Ω",
+          1,
+          "R0603",
+          "R18",
+          {
+            "Manufacturer Part": "0603WAF2200T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C22962"
+          }
+        ],
+        [
+          "17-21SUYC/TR8",
+          2,
+          "LED0805-R-RD",
+          "SENSE1,SENSE2",
+          {
+            "Manufacturer Part": "KT-0805黄灯",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2296"
+          }
+        ],
+        [
+          "LM2596S-5.0",
+          1,
+          "TO-263-5_L10.2-W8.9-P1.70-BR",
+          "U1",
+          {
+            "Manufacturer Part": "LM2596S-5.0",
+            "Manufacturer": "UMW(友台半导体)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C347421"
+          }
+        ]
+      ],
+      "updateTime": 1777685169,
+      "createTime": 1777685169,
+      "histories": [],
+      "created_at": "2026-05-02 11:26:09",
+      "updated_at": "2026-05-02 11:26:09"
+    },
+    {
+      "uuid": "18ee147a0350a40c25521fe00b1eef58",
+      "puuid": "2021984b535c7cc7c0e77d3f4223a67d",
+      "title": "PCB_Charging Indicator(old)",
+      "filename": "PCB_Charging Indicator(old).json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "b7243d11a5f04fb7894887aaa3569585": 3,
+        "fb11a1cdebf6433b8a3c664a100689e6": 1,
+        "217a70377f7a474f8966ef43298e33a0": 1,
+        "82605a93a0be4c79a27d82f67f2aca29": 4,
+        "19c77e72422b43b59c26b9fa67af5de4": 1,
+        "a749997eca484d4bbe9addb217c112e5": 4,
+        "398691f1f785460098bbe5ee6590333c": 8,
+        "2ee8eb13a0124a108e622ce40c0c25a8": 2,
+        "8fa9bfea60d44401961b149a858bb958": 2,
+        "1e14fbe27a4844709b0e7b348b7cd16c": 1,
+        "bade90667a6e4731855e9a223387b8a6": 1,
+        "b60f399a7a7e41848b2be1eb49c79141": 7,
+        "590905e7dccd4def806fe3e4cb758ab9": 1,
+        "23963262e895473595853a6c6019101c": 1,
+        "a5b8fff1a45c42f9aa306bafedcb5748": 1,
+        "148de89c6add4b2ca164f49e7433446f": 1,
+        "f8151fdc728a41ebbc304e11d39e5437": 1,
+        "1ea2e7045b10400cba09c2b065998c9f": 1,
+        "4a81c52f384a4e1ba3f57a3703e0f5f9": 4,
+        "8e9b1be4bcb6420dbd1d09bf04b02792": 2
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "1N4007W",
+          2,
+          "SOD-123_L2.8-W1.8-LS3.7-RD",
+          "D1,D2",
+          {
+            "Manufacturer Part": "1N4007W",
+            "Manufacturer": "BLUE ROCKET",
+            "Supplier": "LCSC",
+            "Supplier Part": "C328592"
+          }
+        ],
+        [
+          "150k",
+          2,
+          "R_AXIAL-0.4",
+          "R1,R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "47k",
+          2,
+          "R_AXIAL-0.4",
+          "R3,R4",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "ATTINY85-20PU",
+          1,
+          "PDIP-8_L9.3-W6.4-P2.54-LS7.9-BL-1",
+          "U3",
+          {
+            "Manufacturer Part": "ATTINY85-20PU",
+            "Manufacturer": "MICROCHIP(美国微芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C965497"
+          }
+        ],
+        [
+          "LM7805CT_C725349",
+          1,
+          "TO-220-3_L10.0-W4.5-P2.54-L",
+          "U5",
+          {
+            "Manufacturer Part": "LM7805CT",
+            "Manufacturer": "HGSEMI(华冠)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C725349"
+          }
+        ]
+      ],
+      "updateTime": 1733003832,
+      "createTime": 1732754075,
+      "histories": [],
+      "created_at": "2024-11-28 11:34:35",
+      "updated_at": "2024-12-01 07:57:12"
+    },
+    {
+      "uuid": "f99cf34e844be42ce630763af655584f",
+      "puuid": "2021984b535c7cc7c0e77d3f4223a67d",
+      "title": "PCB_Charging Indicator 4 Layer(old)",
+      "filename": "PCB_Charging Indicator 4 Layer(old).json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "fb11a1cdebf6433b8a3c664a100689e6": 1,
+        "217a70377f7a474f8966ef43298e33a0": 1,
+        "82605a93a0be4c79a27d82f67f2aca29": 4,
+        "19c77e72422b43b59c26b9fa67af5de4": 1,
+        "a749997eca484d4bbe9addb217c112e5": 4,
+        "398691f1f785460098bbe5ee6590333c": 8,
+        "2ee8eb13a0124a108e622ce40c0c25a8": 2,
+        "8fa9bfea60d44401961b149a858bb958": 2,
+        "281331a006ef4c05b8ec457a626c4c60": 3,
+        "1e14fbe27a4844709b0e7b348b7cd16c": 1,
+        "bade90667a6e4731855e9a223387b8a6": 1,
+        "b60f399a7a7e41848b2be1eb49c79141": 7,
+        "590905e7dccd4def806fe3e4cb758ab9": 1,
+        "23963262e895473595853a6c6019101c": 1,
+        "a5b8fff1a45c42f9aa306bafedcb5748": 1,
+        "148de89c6add4b2ca164f49e7433446f": 1,
+        "f8151fdc728a41ebbc304e11d39e5437": 1,
+        "1ea2e7045b10400cba09c2b065998c9f": 1,
+        "4a81c52f384a4e1ba3f57a3703e0f5f9": 4,
+        "8e9b1be4bcb6420dbd1d09bf04b02792": 2
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "1N4007W",
+          2,
+          "SOD-123_L2.8-W1.8-LS3.7-RD",
+          "D1,D2",
+          {
+            "Manufacturer Part": "1N4007W",
+            "Manufacturer": "BLUE ROCKET",
+            "Supplier": "LCSC",
+            "Supplier Part": "C328592"
+          }
+        ],
+        [
+          "150k",
+          2,
+          "R_AXIAL-0.4",
+          "R1,R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "47k",
+          2,
+          "R_AXIAL-0.4",
+          "R3,R4",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "ATTINY85-20PU",
+          1,
+          "PDIP-8_L9.3-W6.4-P2.54-LS7.9-BL-1",
+          "U3",
+          {
+            "Manufacturer Part": "ATTINY85-20PU",
+            "Manufacturer": "MICROCHIP(美国微芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C965497"
+          }
+        ],
+        [
+          "LM7805CT_C725349",
+          1,
+          "TO-220-3_L10.0-W4.5-P2.54-L",
+          "U5",
+          {
+            "Manufacturer Part": "LM7805CT",
+            "Manufacturer": "HGSEMI(华冠)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C725349"
+          }
+        ]
+      ],
+      "updateTime": 1733003985,
+      "createTime": 1732975606,
+      "histories": [],
+      "created_at": "2024-12-01 00:06:46",
+      "updated_at": "2024-12-01 07:59:45"
+    },
+    {
+      "uuid": "5461ac209cfc5b4edfb08a7b833e1687",
+      "puuid": "2021984b535c7cc7c0e77d3f4223a67d",
+      "title": "PCB Charging Indicator 2 Layer",
+      "filename": "PCB Charging Indicator 2 Layer.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "b7243d11a5f04fb7894887aaa3569585": 3,
+        "fb11a1cdebf6433b8a3c664a100689e6": 1,
+        "217a70377f7a474f8966ef43298e33a0": 1,
+        "82605a93a0be4c79a27d82f67f2aca29": 4,
+        "19c77e72422b43b59c26b9fa67af5de4": 1,
+        "398691f1f785460098bbe5ee6590333c": 8,
+        "2ee8eb13a0124a108e622ce40c0c25a8": 2,
+        "8fa9bfea60d44401961b149a858bb958": 2,
+        "1e14fbe27a4844709b0e7b348b7cd16c": 1,
+        "bade90667a6e4731855e9a223387b8a6": 1,
+        "b60f399a7a7e41848b2be1eb49c79141": 7,
+        "590905e7dccd4def806fe3e4cb758ab9": 1,
+        "23963262e895473595853a6c6019101c": 1,
+        "a5b8fff1a45c42f9aa306bafedcb5748": 1,
+        "148de89c6add4b2ca164f49e7433446f": 1,
+        "f8151fdc728a41ebbc304e11d39e5437": 1,
+        "1ea2e7045b10400cba09c2b065998c9f": 1,
+        "a749997eca484d4bbe9addb217c112e5": 2,
+        "4a81c52f384a4e1ba3f57a3703e0f5f9": 4,
+        "8e9b1be4bcb6420dbd1d09bf04b02792": 2
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "1N4007W",
+          2,
+          "SOD-123_L2.8-W1.8-LS3.7-RD",
+          "D1,D2",
+          {
+            "Manufacturer Part": "1N4007W",
+            "Manufacturer": "BLUE ROCKET",
+            "Supplier": "LCSC",
+            "Supplier Part": "C328592"
+          }
+        ],
+        [
+          "150k",
+          2,
+          "R_AXIAL-0.4",
+          "R1,R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "47k",
+          2,
+          "R_AXIAL-0.4",
+          "R3,R4",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "ATTINY85-20PU",
+          1,
+          "PDIP-8_L9.3-W6.4-P2.54-LS7.9-BL-1",
+          "U3",
+          {
+            "Manufacturer Part": "ATTINY85-20PU",
+            "Manufacturer": "MICROCHIP(美国微芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C965497"
+          }
+        ],
+        [
+          "LM7805CT_C725349",
+          1,
+          "TO-220-3_L10.0-W4.5-P2.54-L",
+          "U5",
+          {
+            "Manufacturer Part": "LM7805CT",
+            "Manufacturer": "HGSEMI(华冠)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C725349"
+          }
+        ]
+      ],
+      "updateTime": 1777685585,
+      "createTime": 1733051856,
+      "histories": [],
+      "created_at": "2024-12-01 21:17:36",
+      "updated_at": "2026-05-02 11:33:05"
+    }
+  ],
+  "sort": [
+    "5e572f631a56d93d4bbdc4baf9467ecf",
+    "79789f8bc6222ccea4c4d1bf56a80a24",
+    "d4b8d8ee5922f683cb16ae135e153b1d"
+  ],
+  "title": "Charging Indicator V1.0",
+  "foldername": "Charging Indicator V1.0",
+  "schfilename": "Charging Indicator V1.0.json",
+  "schfilemtime": 1777685434157
+}

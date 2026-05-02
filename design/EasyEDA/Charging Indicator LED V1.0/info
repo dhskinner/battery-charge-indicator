@@ -1,0 +1,290 @@
+{
+  "uuid": "f14dc465b182ddd1b3a9577f7f269b8e",
+  "path": "Offline/Charging%20Indicator%20LED%20V1.0",
+  "name": "Charging Indicator LED V1.0",
+  "content": "",
+  "created_at": "2024-12-27 15:52:57",
+  "updated_at": "2026-05-02 11:35:30",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "187177c7e37d10b19386be7bd9e68807",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "174fc9d3f6c85723c8c5def63b722ca6": 8,
+        "8aebd62994a05a89b2fc1c520ce2e64f": 8,
+        "abc8efbbe6334a1a93f69a375c89a50e": 2,
+        "3fdb069e8dd740199d7d363421f83b8a": 4,
+        "3527b981ccef447e85f57b28e7d86b3d": 1,
+        "eb1e04488991d3e67297eef9f4b1e99a": 6
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "DLC/6SGD",
+          1,
+          "DLC-6SGD",
+          "D1",
+          {
+            "Manufacturer Part": "DLC/6SGD",
+            "Manufacturer": "Kingbright",
+            "Supplier": "TME",
+            "Supplier Part": "DLC-6SGB"
+          }
+        ],
+        [
+          "0805G (Green)",
+          8,
+          "LED0805-R-RD",
+          "LED1,LED2,LED3,LED4,LED5,LED6,LED7,LED8",
+          {
+            "Manufacturer Part": "KT-0805G",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2297"
+          }
+        ],
+        [
+          "1kΩ",
+          8,
+          "R0805",
+          "R1,R2,R3,R4,R5,R6,R7,R8",
+          {
+            "Manufacturer Part": "0805W8F1001T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17513"
+          }
+        ],
+        [
+          "330Ω",
+          6,
+          "R0603",
+          "R9,R10,R11,R12,R13,R14",
+          {
+            "Manufacturer Part": "0603WAF3300T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C23138"
+          }
+        ],
+        [
+          "PAD-ROUND-3_2",
+          4,
+          "PADPAD",
+          "U1,U2,U3,U4",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ]
+      ],
+      "updateTime": 1777683531,
+      "createTime": 1735278778,
+      "histories": [],
+      "created_at": "2024-12-27 15:52:58",
+      "updated_at": "2026-05-02 10:58:51"
+    },
+    {
+      "uuid": "5a77ff3399daa2fb6c32ed62b9b7d4db",
+      "puuid": "f14dc465b182ddd1b3a9577f7f269b8e",
+      "title": "PCB_Charging Indicator LED",
+      "filename": "PCB_Charging Indicator LED.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "8d41d3a707bc479d99c01439f66e5d0d": 1,
+        "a749997eca484d4bbe9addb217c112e5": 2,
+        "82605a93a0be4c79a27d82f67f2aca29": 8,
+        "b60f399a7a7e41848b2be1eb49c79141": 8,
+        "5cde33107cd745168ebef6b5d5310faf": 4,
+        "398691f1f785460098bbe5ee6590333c": 6
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "0805G (Green)",
+          8,
+          "LED0805-R-RD",
+          "LED1,LED2,LED3,LED4,LED5,LED6,LED7,LED8",
+          {
+            "Manufacturer Part": "KT-0805G",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2297"
+          }
+        ],
+        [
+          "Load",
+          1,
+          "5.08-2P_SCREW_TERMINAL",
+          "P1",
+          {
+            "Manufacturer Part": "Screw terminal 2p",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1kΩ",
+          8,
+          "R0805",
+          "R1,R2,R3,R4,R5,R6,R7,R8",
+          {
+            "Manufacturer Part": "0805W8F1001T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17513"
+          }
+        ],
+        [
+          "470Ω",
+          6,
+          "R0603",
+          "R9,R10,R11,R12,R13,R14",
+          {
+            "Manufacturer Part": "0603WAF4700T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C23179"
+          }
+        ],
+        [
+          "DLC/6SRD",
+          1,
+          "DLC-6SRD_FP",
+          "D1",
+          {
+            "Manufacturer Part": "DLC/6SRD",
+            "Manufacturer": "Kingbright",
+            "Supplier": "TME",
+            "Supplier Part": "DLC-6SRD"
+          }
+        ]
+      ],
+      "updateTime": 1735306577,
+      "createTime": 1735288054,
+      "histories": [],
+      "created_at": "2024-12-27 18:27:34",
+      "updated_at": "2024-12-27 23:36:17"
+    },
+    {
+      "uuid": "efbe9d2d2ce261635c10aec9d7a6065e",
+      "puuid": "f14dc465b182ddd1b3a9577f7f269b8e",
+      "title": "PCB_Charging Indicator LED2",
+      "filename": "PCB_Charging Indicator LED2.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "8d41d3a707bc479d99c01439f66e5d0d": 1,
+        "a749997eca484d4bbe9addb217c112e5": 2,
+        "82605a93a0be4c79a27d82f67f2aca29": 8,
+        "b60f399a7a7e41848b2be1eb49c79141": 8,
+        "5cde33107cd745168ebef6b5d5310faf": 4,
+        "398691f1f785460098bbe5ee6590333c": 6
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "0805G (Green)",
+          8,
+          "LED0805-R-RD",
+          "LED1,LED2,LED3,LED4,LED5,LED6,LED7,LED8",
+          {
+            "Manufacturer Part": "KT-0805G",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2297"
+          }
+        ],
+        [
+          "Load",
+          1,
+          "5.08-2P_SCREW_TERMINAL",
+          "P1",
+          {
+            "Manufacturer Part": "Screw terminal 2p",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1kΩ",
+          8,
+          "R0805",
+          "R1,R2,R3,R4,R5,R6,R7,R8",
+          {
+            "Manufacturer Part": "0805W8F1001T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17513"
+          }
+        ],
+        [
+          "470Ω",
+          6,
+          "R0603",
+          "R9,R10,R11,R12,R13,R14",
+          {
+            "Manufacturer Part": "0603WAF4700T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C23179"
+          }
+        ],
+        [
+          "DLC/6SRD",
+          1,
+          "DLC-6SRD_FP",
+          "D1",
+          {
+            "Manufacturer Part": "DLC/6SRD",
+            "Manufacturer": "Kingbright",
+            "Supplier": "TME",
+            "Supplier Part": "DLC-6SRD"
+          }
+        ]
+      ],
+      "updateTime": 1777683610,
+      "createTime": 1735301278,
+      "histories": [],
+      "created_at": "2024-12-27 22:07:58",
+      "updated_at": "2026-05-02 11:00:10"
+    }
+  ],
+  "sort": [],
+  "title": "Charging Indicator LED V1.0",
+  "foldername": "Charging Indicator LED V1.0",
+  "schfilename": "Charging Indicator LED V1.0.json",
+  "schfilemtime": 1777683531937
+}

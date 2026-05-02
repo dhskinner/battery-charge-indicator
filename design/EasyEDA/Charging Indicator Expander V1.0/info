@@ -1,0 +1,313 @@
+{
+  "uuid": "cf6b8da490d8561d9064243d98169195",
+  "path": "Offline/Charging%20Indicator%20Expander%20V1.0",
+  "name": "Charging Indicator Expander V1.0",
+  "content": "Daughter board to expand the microprocessor IO",
+  "created_at": "2024-12-09 22:14:48",
+  "updated_at": "2026-05-02 11:20:08",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "9fb85bd1e1e6826307f5e33ea92649a1",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "92c32ceaaac84139add7ebda884f0a47": 3,
+        "b91da0cd9691494e8334b0a8b0ff0b54": 1,
+        "8c95eef853b1473e9539399823e4b359": 1,
+        "c8c2c558fac9410d08cd9c984c6e32bd": 3,
+        "8aebd62994a05a89b2fc1c520ce2e64f": 4,
+        "174fc9d3f6c85723c8c5def63b722ca6": 1,
+        "90120144a29f250f52c5fae09d57661e": 6,
+        "abc8efbbe6334a1a93f69a375c89a50e": 1,
+        "ca94110f4544769d36adda4b0515e409": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "100nF",
+          1,
+          "C0402",
+          "C1",
+          {
+            "Manufacturer Part": "CL05B104KO5NNNC",
+            "Manufacturer": "SAMSUNG(三星)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C1525"
+          }
+        ],
+        [
+          "0805G (Green)",
+          1,
+          "LED0805-R-RD",
+          "CHARGE",
+          {
+            "Manufacturer Part": "KT-0805G",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2297"
+          }
+        ],
+        [
+          "17-21SUYC/TR8",
+          3,
+          "LED0805-R-RD",
+          "MAIN,PRI,SEC",
+          {
+            "Manufacturer Part": "KT-0805黄灯",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2296"
+          }
+        ],
+        [
+          "1kΩ",
+          4,
+          "R0805",
+          "R1,R2,R3,R4",
+          {
+            "Manufacturer Part": "0805W8F1001T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17513"
+          }
+        ],
+        [
+          "0Ω",
+          6,
+          "R0603",
+          "R5,R6,R7,R8,R10,R11",
+          {
+            "Manufacturer Part": "0603WAF0000T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C21189"
+          }
+        ],
+        [
+          "ATTINY84A-SSF_C1340034",
+          1,
+          "SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL",
+          "U4",
+          {
+            "Manufacturer Part": "ATTINY84A-SSF",
+            "Manufacturer": "MICROCHIP(美国微芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C1340034"
+          }
+        ]
+      ],
+      "updateTime": 1777684808,
+      "createTime": 1733746489,
+      "histories": [],
+      "created_at": "2024-12-09 22:14:49",
+      "updated_at": "2026-05-02 11:20:08"
+    },
+    {
+      "uuid": "97fed8a9df9dfde8da8e2787c84f76e0",
+      "title": "Sheet_2",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {},
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "100nF",
+          1,
+          "C0402",
+          "C1",
+          {
+            "Manufacturer Part": "CL05B104KO5NNNC",
+            "Manufacturer": "SAMSUNG(三星)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C1525"
+          }
+        ],
+        [
+          "0805G (Green)",
+          1,
+          "LED0805-R-RD",
+          "CHARGE",
+          {
+            "Manufacturer Part": "KT-0805G",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2297"
+          }
+        ],
+        [
+          "17-21SUYC/TR8",
+          3,
+          "LED0805-R-RD",
+          "MAIN,PRI,SEC",
+          {
+            "Manufacturer Part": "KT-0805黄灯",
+            "Manufacturer": "KENTO",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2296"
+          }
+        ],
+        [
+          "1kΩ",
+          4,
+          "R0805",
+          "R1,R2,R3,R4",
+          {
+            "Manufacturer Part": "0805W8F1001T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17513"
+          }
+        ],
+        [
+          "0Ω",
+          6,
+          "R0603",
+          "R5,R6,R7,R8,R10,R11",
+          {
+            "Manufacturer Part": "0603WAF0000T5E",
+            "Manufacturer": "UNI-ROYAL(厚声)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C21189"
+          }
+        ],
+        [
+          "ATTINY84A-SSF_C1340034",
+          1,
+          "SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL",
+          "U4",
+          {
+            "Manufacturer Part": "ATTINY84A-SSF",
+            "Manufacturer": "MICROCHIP(美国微芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C1340034"
+          }
+        ]
+      ],
+      "updateTime": 1777684778,
+      "createTime": 1777684778,
+      "histories": [],
+      "created_at": "2026-05-02 11:19:38",
+      "updated_at": "2026-05-02 11:19:38"
+    },
+    {
+      "uuid": "434a831f2f94defdd8b8148052d82fdc",
+      "puuid": "2021984b535c7cc7c0e77d3f4223a67d",
+      "title": "PCB Charging Indicator Expander",
+      "filename": "PCB Charging Indicator Expander.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "0821ed6ea50c44f4909e4be7610e4198": 1,
+        "a749997eca484d4bbe9addb217c112e5": 1,
+        "a5b8fff1a45c42f9aa306bafedcb5748": 1,
+        "fb11a1cdebf6433b8a3c664a100689e6": 3,
+        "b60f399a7a7e41848b2be1eb49c79141": 4,
+        "398691f1f785460098bbe5ee6590333c": 6,
+        "0f2364c02f094100b1b3205c9d829099": 1,
+        "82605a93a0be4c79a27d82f67f2aca29": 4
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "1N4007W",
+          2,
+          "SOD-123_L2.8-W1.8-LS3.7-RD",
+          "D1,D2",
+          {
+            "Manufacturer Part": "1N4007W",
+            "Manufacturer": "BLUE ROCKET",
+            "Supplier": "LCSC",
+            "Supplier Part": "C328592"
+          }
+        ],
+        [
+          "150k",
+          2,
+          "R_AXIAL-0.4",
+          "R1,R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "47k",
+          2,
+          "R_AXIAL-0.4",
+          "R3,R4",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "ATTINY85-20PU",
+          1,
+          "PDIP-8_L9.3-W6.4-P2.54-LS7.9-BL-1",
+          "U3",
+          {
+            "Manufacturer Part": "ATTINY85-20PU",
+            "Manufacturer": "MICROCHIP(美国微芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C965497"
+          }
+        ],
+        [
+          "LM7805CT_C725349",
+          1,
+          "TO-220-3_L10.0-W4.5-P2.54-L",
+          "U5",
+          {
+            "Manufacturer Part": "LM7805CT",
+            "Manufacturer": "HGSEMI(华冠)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C725349"
+          }
+        ]
+      ],
+      "updateTime": 1733876510,
+      "createTime": 1733775180,
+      "histories": [],
+      "created_at": "2024-12-10 06:13:00",
+      "updated_at": "2024-12-11 10:21:50"
+    }
+  ],
+  "sort": [
+    "9fb85bd1e1e6826307f5e33ea92649a1",
+    "97fed8a9df9dfde8da8e2787c84f76e0"
+  ],
+  "title": "Charging Indicator Expander V1.0",
+  "foldername": "Charging Indicator Expander V1.0",
+  "schfilename": "Charging Indicator Expander V1.0.json",
+  "schfilemtime": 1777684809250
+}
