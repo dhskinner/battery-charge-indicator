@@ -30,6 +30,15 @@
 // watchdog timeout period (see <avr/wdt.h> WDTO_* options)
 #define WATCHDOG_TIMEOUT WDTO_4S
 
+// temporary watchdog validation mode:
+// when enabled, firmware turns on the green output LED (OUTPUT_PWM_FADE_PIN) then intentionally hangs once
+// so watchdog can reset the MCU; this test auto-skips after a watchdog reset
+// #define ENABLE_WATCHDOG_LOCKUP_TEST
+
+// watchdog reset indication pattern on startup (all three onboard channel LEDs)
+#define WATCHDOG_RESET_FLASHES 10
+#define WATCHDOG_RESET_FLASH_MS 75
+
 #define START_FLASHES 1              // number of times to flash each LED on startup
 #define START_FLASH_MS 200           // duration to flash LEDs on startup
 #define START_DELAY_MS 1000          // delay on startup

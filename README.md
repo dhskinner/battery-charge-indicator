@@ -74,8 +74,8 @@ On boot (normal mode), the firmware:
 
 Compile-time options in `src/config.h`:
 
-- `ENABLE_FUSE_REPORT_MODE`: read and print ATTiny84A fuse bytes and fuse bit breakdown over serial at startup
-- `ENABLE_WATCHDOG_TIMER` : enable the watchdog timer for automatic recovery from lockups.
+- `ENABLE_WATCHDOG_TIMER`: enable the watchdog timer for automatic recovery from lockups.
+- `ENABLE_WATCHDOG_LOCKUP_TEST`: run a test that watchdog works (not for production code) 
 - `ENABLE_CALIBRATION_MODE`: samples ADC channels and blinks out measured values for field calibration.
 - `ENABLE_PIN_TEST_MODE`: basic pin/LED test routine (`src/pintest.h`) for validating board mapping and outputs.
 
@@ -122,19 +122,72 @@ pio run -t upload
 
 ### Setting bootloader/fuse for fresh ATTiny84A devices
 
-The source comments in `src/main.cpp` include detailed instructions for preparing a fresh ATTiny84A with USBasp, including:
+To burn the bootloader to a fresh Attiny:
 
-- core board options,
-- expected fuse values,
-- pin mapping requirement (**Clockwise** mapping),
-- proof-of-life LED checks,
-- recovery pointer for high-voltage serial programming if needed.
+1) connect the ICSP header from USBAsp to the target board
 
-`platformio.ini` also sets expected signature/fuse values.
+```
+      ATTiny84A Expander Daughter Board (purple)
+      -----------------------------------------
+                  -----
+      pin 1 MISO |*    | pin 2 5V+
+      pin 3 SCK  |     | pin 4 MOSI
+      pin 5 RST  |     | pin 6 GND
+                  -----
+```
 
-The tool AVRDUDESS at (https://github.com/ZakKemble/AVRDUDESS)[https://github.com/ZakKemble/AVRDUDESS] is also easy to set fuse bits.
+2) Setup USBAsp board - refer to here for a guide to USBAsp https://www.freetronics.com.au/pages/usbasp-icsp-programmer-quickstart-guide:
+- jumper the "slow clock" header
+- select "5V" on the target voltage selection switch
+- jumper the 'target power' header
 
-To check fuse settings run the provided script in Powershell:
+3) Setup some sensible options:
+- Board:              Attiny 24/44/84a (no bootloader)
+- B.O.D. Level:       Enabled 4.3V (brownout detection) (!! IMPORTANT !!)
+- Chip:               Attiny84(a)
+- Clock Source:       8MHz (internal)
+- Save EEPROM:        EEPROM not retained
+- LTO:                Enabled
+- millis()/micros():  Enabled
+- tinyNeoPixel:       Port A
+- Pin mapping:        Clockwise (!! IMPORTANT !!)
+- Programmer:         USBAsp (ATTiny Core)
+
+4) Burn bootloader and check all is ok i.e. 2 bytes written
+
+5) On the USBAsp board, remove the "Slow Clock" jumper
+
+6) For a simple proof-of-life test either:
+- run a 'Blink' sketch using pin 7,8,9 or 10 (see "pintest.h" for LED pinouts)
+- uncomment #define PIN_TEST_MODE below to see all four LED's blinking at the same time
+- upload and run this sample:
+
+```code
+          int led_pin[4] = {7, 8, 9, 10}, led_index = 0;
+          void setup() {
+            for (; led_index < 4; led_index++) {
+              pinMode(led_pin[led_index], OUTPUT);
+              digitalWrite(led_pin[led_index], LOW);
+          }}
+          void loop() {
+            led_index = led_index >= 3 ? 0 : led_index + 1;
+            digitalWrite(led_pin[led_index], HIGH); delay(100);
+            digitalWrite(led_pin[led_index], LOW); delay(100);
+          }
+```
+
+7) Upload the production program code as normal using PlatformIO and USBAsp connected via ICSP:
+- go to the PlatformIO tab in VSCode and 'Open" this project
+- when config is complete, go to the PIO menu bar to the left of the VSCode working area
+- the menu for "Project Tasks" should be visible - hit "Upload"
+
+### Fuse bits
+
+`platformio.ini` sets expected signature/fuse values.
+
+Alternatively, the tool AVRDUDESS at (https://github.com/ZakKemble/AVRDUDESS)[https://github.com/ZakKemble/AVRDUDESS] is an easy way to check and set fuse bits.
+
+To read fuse settings run the provided script in Powershell:
 
 ```bash
 .\tools\read-attiny84a-fuses.ps1 -AvrDude "C:\Program Files (x86)\AVRDUDESS\avrdude.exe" 
@@ -192,11 +245,12 @@ Note: many AVR fuse features are active-low (bit = 0 means programmed/enabled).
 ```
 
 Notes: 
-1. Its essential to keep pin mapping/clock settings aligned with your board core configuration when burning fuses.
-2. Many AVR fuse features are active-low (bit = 0 means programmed/enabled).
-3. Enabling BOD increases power consumption slightly.
-4. Higher BOD thresholds can cause more frequent resets on brief supply dips.
-5. If the MCU appears unresponsive after incorrect fuse settings, use HV rescue tooling as referenced in the source comments.
+1. This firmware is currently configured for `TARGET_PROCESSOR_ATTINY84`
+2. Its essential to keep pin mapping/clock settings aligned with your board core configuration when burning fuses. If changing pin mapping, ensure the selected core variant and hardware mapping are consistent before flashing.
+3. Many AVR fuse features are active-low (bit = 0 means programmed/enabled).
+4. Enabling BOD increases power consumption slightly.
+5. Higher BOD thresholds can cause more frequent resets on brief supply dips.
+6. If the MCU appears unresponsive after incorrect fuse settings, use HV rescue tooling as referenced in the source comments.
 
 ### Calibration
 
@@ -224,10 +278,9 @@ Implementation summary:
 3. Long blocking paths (startup LED flash, calibration and pin-test delays) also feed the watchdog to avoid false triggers.
 4. If the previous reset was watchdog-caused, a brief LED pattern is shown at boot for diagnostics.
 
-### Notes
+### Troubleshooting
 
-- This firmware is currently configured for `TARGET_PROCESSOR_ATTINY84`.
-- If changing pin mapping, ensure the selected core variant and hardware mapping are consistent before flashing.
+If the Attiny is bricked refer to https://github.com/tsaarni/avr-high-voltage-serial-programming
 
 ## 3) Hardware Design
 

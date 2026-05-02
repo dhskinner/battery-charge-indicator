@@ -6,124 +6,12 @@
  *  Written by:  Dave Skinner
  *  Date:        16 December 2024
  *
- ********************************************************************************
-
-To burn the bootloader to a fresh Attiny:
-
-  1) connect the ICSP header from USBAsp to the target board
-
-      ATTiny84A Expander Daughter Board (purple)
-      -----------------------------------------
-                  -----
-      pin 1 MISO |*    | pin 2 5V+
-      pin 3 SCK  |     | pin 4 MOSI
-      pin 5 RST  |     | pin 6 GND
-                  -----
-
-  2) Setup USBAsp board:
-      - jumper the "slow clock" header
-      - select "5V" on the target voltage selection switch
-      - jumper the 'target power' header
-
-      Refer to here for a guide to USBAsp https://www.freetronics.com.au/pages/usbasp-icsp-programmer-quickstart-guide
-
-  3) setup the following options:
-      - Board:              Attiny 24/44/84a (no bootloader)
-      - B.O.D. Level:       Enabled 4.3V (brownout detection) (!! IMPORTANT !!)
-      - Chip:               Attiny84(a)
-      - Clock Source:       8MHz (internal)
-      - Save EEPROM:        EEPROM not retained
-      - LTO:                Enabled
-      - millis()/micros():  Enabled
-      - tinyNeoPixel:       Port A
-      - Pin mapping:        Clockwise (!! IMPORTANT !!)
-      - Programmer:         USBAsp (ATTiny Core)
-
-  4) Burn bootloader and check all is ok i.e. 2 bytes written
-
-  5) On the USBAsp board, remove the "Slow Clock" jumper
-
-  6) For a simple proof-of-life test either:
-      - run a 'Blink' sketch using pin 7,8,9 or 10 (see "pintest.h" for LED pinouts)
-      - uncomment #define PIN_TEST_MODE below to see all four LED's blinking at the same time
-      - upload and run this sample:
-
-          int led_pin[4] = {7, 8, 9, 10}, led_index = 0;
-          void setup() {
-            for (; led_index < 4; led_index++) {
-              pinMode(led_pin[led_index], OUTPUT);
-              digitalWrite(led_pin[led_index], LOW);
-          }}
-          void loop() {
-            led_index = led_index >= 3 ? 0 : led_index + 1;
-            digitalWrite(led_pin[led_index], HIGH); delay(100);
-            digitalWrite(led_pin[led_index], LOW); delay(100);
-          }
-
-  7) Upload the production program code as normal using PlatformIO and USBAsp connected via ICSP
-     For PlatformIO:
-        - go to the PlatformIO tab in VSCode and 'Open" this project
-        - when config is complete, go to the PIO menu bar to the left of the VSCode working area
-        - the menu for "Project Tasks" should be visible - hit "Upload"
-
-  If the Attiny is bricked refer to https://github.com/tsaarni/avr-high-voltage-serial-programming
-*/
-
-// Uncomment the following line for a simple test program that cycles a couple of LED's:
-// #define ENABLE_PIN_TEST_MODE
+ ********************************************************************************/
 
 #include "channel.h"
 #include "fader.h"
 #include "pintest.h"
-
-#ifdef ENABLE_WATCHDOG_TIMER
-// Capture and clear reset cause as early as possible, then disable WDT to avoid reset loops.
-uint8_t g_resetCause __attribute__((section(".noinit")));
-void watchdogEarlyInit(void) __attribute__((naked)) __attribute__((section(".init3")));
-void watchdogEarlyInit(void)
-{
-  g_resetCause = MCUSR;
-  MCUSR = 0;
-  wdt_disable();
-}
-
-static inline void watchdogInit()
-{
-  wdt_enable(WATCHDOG_TIMEOUT);
-  wdt_reset();
-}
-
-static inline void watchdogFeed()
-{
-  wdt_reset();
-}
-
-static void indicateWatchdogReset()
-{
-  if ((g_resetCause & _BV(WDRF)) == 0)
-    return;
-
-  // Briefly flash all three onboard channel LEDs to indicate a watchdog recovery reset.
-  pinMode(CHANNEL_PRI_LED_PIN, OUTPUT);
-  pinMode(CHANNEL_SEC_LED_PIN, OUTPUT);
-  pinMode(CHANNEL_MAINS_LED_PIN, OUTPUT);
-
-  for (uint8_t i = 0; i < 2; i++)
-  {
-    digitalWrite(CHANNEL_PRI_LED_PIN, HIGH);
-    digitalWrite(CHANNEL_SEC_LED_PIN, HIGH);
-    digitalWrite(CHANNEL_MAINS_LED_PIN, HIGH);
-    watchdogFeed();
-    delay(75);
-
-    digitalWrite(CHANNEL_PRI_LED_PIN, LOW);
-    digitalWrite(CHANNEL_SEC_LED_PIN, LOW);
-    digitalWrite(CHANNEL_MAINS_LED_PIN, LOW);
-    watchdogFeed();
-    delay(75);
-  }
-}
-#endif
+#include "watchdog.h"
 
 Channel channelPrimary(CHANNEL_PRI_SENSE_PIN, CHANNEL_PRI_THRESHOLD, CHANNEL_PRI_SCALE, CHANNEL_PRI_LED_PIN);
 Channel channelSecondary(CHANNEL_SEC_SENSE_PIN, CHANNEL_SEC_THRESHOLD, CHANNEL_SEC_SCALE, CHANNEL_SEC_LED_PIN);
@@ -159,6 +47,21 @@ void setup()
 #ifdef ENABLE_WATCHDOG_TIMER
   indicateWatchdogReset();
   watchdogInit();
+
+#ifdef ENABLE_WATCHDOG_LOCKUP_TEST
+  // Force a one-shot lockup test: on non-watchdog boot, turn on green output LED and hang.
+  // After watchdog reset, this block is skipped so normal startup can continue.
+  if (!watchdogWasReset())
+  {
+    pinMode(OUTPUT_PWM_FADE_PIN, OUTPUT);
+    digitalWrite(OUTPUT_PWM_FADE_PIN, HIGH);
+    while (true)
+    {
+      // intentional lockup to validate watchdog reset behavior
+    }
+  }
+#endif
+
 #endif
 }
 
